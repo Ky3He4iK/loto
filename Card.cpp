@@ -35,9 +35,8 @@ void Card::buttonPressed(int x, int y) {
         buttons[x][y]->setOk();
         int okc = 0;
         for (int i = 0; i < 9; i++) {
-            if (buttons[i][y]->getOk()) {
+            if (buttons[x][i]->getOk()) {
                 okc++;
-                break;
             }
         }
         if (okc == 5)

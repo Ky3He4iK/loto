@@ -30,7 +30,9 @@ MainWindow::MainWindow(QWidget *) {
 }
 
 void MainWindow::finishSlot() {
-    hide();
+//    hide();
+    label->setText("Game ended!");
+    disconnect(timer, &QTimer::timeout, this, &MainWindow::timerSlot);
 }
 
 void MainWindow::timerSlot() {
