@@ -25,10 +25,12 @@ void Card::newBarrel(int barelVal) {
     current_bar = barelVal;
     if (is_bot)
         for (int i = 0; i < 3; i++)
-            buttonPressed(barelVal / 10, i);
+            buttonPressed(i, barelVal / 10);
 }
 
 void Card::buttonPressed(int x, int y) {
+    if (y >= 9)
+        y = 8;
     if (buttons[x][y]->getVal() == current_bar) {
         buttons[x][y]->setOk();
         int okc = 0;
@@ -45,4 +47,9 @@ void Card::buttonPressed(int x, int y) {
 
 void Card::setBot() {
     is_bot = true;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 9; j++) {
+            disconnect(buttons[i][j], &MyButton::pressedSignal, this, &Card::buttonPressed);
+        }
+    }
 }

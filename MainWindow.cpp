@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *) {
     cards.resize(2);
     cards[0] = new Card(load_card());
     layout->addWidget(cards[0]);
+    connect(cards[0], &Card::finished, this, &MainWindow::finishSlot);
 
     label = new QLabel();
     layout->addWidget(label);
@@ -17,10 +18,15 @@ MainWindow::MainWindow(QWidget *) {
     cards[1] = new Card(load_card());
     layout->addWidget(cards[1]);
     cards[1]->setBot();
+    connect(cards[1], &Card::finished, this, &MainWindow::finishSlot);
 
     setLayout(layout);
     label->setText(QString::number(123));
     timerSlot();
+
+    timer = new QTimer();
+    timer->start(100);
+    connect(timer, &QTimer::timeout, this, &MainWindow::timerSlot);
 }
 
 void MainWindow::finishSlot() {

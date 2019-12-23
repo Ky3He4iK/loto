@@ -10,7 +10,10 @@
 #include <string>
 
 MyButton::MyButton(int _x, int _y, int _val, QWidget *) : x(_x), y(_y), val(_val) {
-    setText(QString::number(val));
+    if (val == 0)
+        setEnabled(false);
+    else
+        setText(QString::number(val));
     connect(this, &MyButton::pressed, this, &MyButton::onPressed);
 }
 
