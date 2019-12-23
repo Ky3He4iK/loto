@@ -21,7 +21,7 @@ public:
 
     void setOk();
 
-    void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event) override;
 
 private slots:
 

@@ -39,5 +39,5 @@ void MyButton::paintEvent(QPaintEvent *event) {
         QPainter p(this);
         style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
     }
-    QWidget::paintEvent(event);
+    QPushButton::paintEvent(event);
 }

@@ -16,8 +16,11 @@ MainWindow::MainWindow(QWidget *) {
 
     cards[1] = new Card(load_card());
     layout->addWidget(cards[1]);
+    cards[1]->setBot();
 
     setLayout(layout);
+    label->setText(QString::number(123));
+    timerSlot();
 }
 
 void MainWindow::finishSlot() {

@@ -23,8 +23,9 @@ Card::Card(const QVector<QVector<int>> &_cardValues, QWidget *) : cardValues(_ca
 
 void Card::newBarrel(int barelVal) {
     current_bar = barelVal;
-    for (int i = 0; i < 3; i++)
-        buttonPressed(barelVal / 10, i);
+    if (is_bot)
+        for (int i = 0; i < 3; i++)
+            buttonPressed(barelVal / 10, i);
 }
 
 void Card::buttonPressed(int x, int y) {
@@ -38,7 +39,7 @@ void Card::buttonPressed(int x, int y) {
             }
         }
         if (okc == 5)
-            emit finished();
+                emit finished();
     }
 }
 
